@@ -32,7 +32,7 @@ public class CarrosDAO extends DAO{
 		return status;
 	}
 	
-	public Carro getUsuarioId(int id) {
+	public Carro getCarroId(int id) {
 		Carro carro = null;
 		
 		try {
@@ -51,7 +51,7 @@ public class CarrosDAO extends DAO{
 		return carro;
 	}
 	
-	public boolean excluirUsuario(int id) {
+	public boolean excluirCarro(int id) {
 		boolean status = false;
 		
 		try {
@@ -68,7 +68,7 @@ public class CarrosDAO extends DAO{
 		return status;
 	}
 	
-	public boolean atualizarUsuario(Carro carro) {
+	public boolean atualizarCarro(Carro carro) {
 		boolean status = false;
 		
 		try {
