@@ -12,10 +12,10 @@ public class Carro {
 	
 	public Carro() {
 		id = -1;
-		modelo = "Exemplo";
-		fabricante = "Exemplo";
-		ano = 0000;
-		cavalos = 000;
+		modelo = "";
+		fabricante = "";
+		ano = 0;
+		cavalos = 0;
 	}
 	
 	public Carro(int id, String modelo, String fabricante, int ano, int cavalos) {

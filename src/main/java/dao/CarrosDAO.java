@@ -1,6 +1,9 @@
 package dao;
 
 import model.Carro;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.sql.*;
 
 public class CarrosDAO extends DAO{
@@ -51,6 +54,50 @@ public class CarrosDAO extends DAO{
 		return carro;
 	}
 	
+	public List<Carro> get() {
+		return get("");
+	}
+
+	
+	public List<Carro> getOrderByID() {
+		return get("id");		
+	}
+	
+	
+	public List<Carro> getOrderByModelo() {
+		return get("modelo");		
+	}
+	
+	
+	public List<Carro> getOrderByAno() {
+		return get("ano");		
+	}
+	
+	public List<Carro> getOrderByFabricante() {
+		return get("fabricante");		
+	}
+	
+	
+	private List<Carro> get(String orderBy) {
+		List<Carro> carros = new ArrayList<Carro>();
+		
+		try {
+			Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+			String sql = "SELECT * FROM carro" + ((orderBy.trim().length() == 0) ? "" : (" ORDER BY " + orderBy));
+			ResultSet rs = st.executeQuery(sql);	           
+	        while(rs.next()) {	            	
+	        	Carro car = new Carro(rs.getInt("id"), rs.getString("modelo"), rs.getString("fabricante"), 
+	        			                rs.getInt("ano"),
+	        			                rs.getInt("cavalos"));
+	            carros.add(car);
+	        }
+	        st.close();
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+		return carros;
+	}
+	
 	public boolean excluirCarro(int id) {
 		boolean status = false;
 		
@@ -86,7 +133,7 @@ public class CarrosDAO extends DAO{
 		return status;
 	}
 	
-	public void getCarros() {
+	/*public void getCarros() {
 		Carro[] carros = null;
 		
 		try {
@@ -108,5 +155,5 @@ public class CarrosDAO extends DAO{
 			System.err.println(e.getMessage());
 		}
 		
-	}
+	}*/
 }
