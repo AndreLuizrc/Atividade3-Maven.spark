@@ -121,7 +121,7 @@ public class CarrosDAO extends DAO{
 		try {
 			Statement st = conexao.createStatement();
 			String sql = "UPDATE carro SET modelo = '" + carro.getModelo() +"', fabricante = '" + carro.getFabricante() + "' , ano = " + carro.getAno() +
-			", cavalos=" + carro.getCavalos() + "WHERE id = " + carro.getId();
+			", cavalos=" + carro.getCavalos() + " WHERE id = " + carro.getId();
 			
 			st.executeUpdate(sql);
 			st.close();
