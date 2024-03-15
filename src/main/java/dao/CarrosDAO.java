@@ -22,8 +22,8 @@ public class CarrosDAO extends DAO{
 		
 		try {
 			Statement st = conexao.createStatement();
-			st.executeUpdate("INSERT INTO carro (id, modelo, fabricante, ano, cavalos)"
-					+ "VALUES (" + carro.getId() + ",'" + carro.getModelo() + "','" + carro.getFabricante() + "'," +carro.getAno() + ","
+			st.executeUpdate("INSERT INTO carro (modelo, fabricante, ano, cavalos)"
+					+ "VALUES ('" + carro.getModelo() + "','" + carro.getFabricante() + "'," +carro.getAno() + ","
 					+ carro.getCavalos() +");");
 			
 			st.close();
@@ -120,8 +120,8 @@ public class CarrosDAO extends DAO{
 		
 		try {
 			Statement st = conexao.createStatement();
-			String sql = "UPDATE usuario SET modelo = '" + carro.getModelo() +"', fabricante = '" + carro.getFabricante() + "' , ano = " + carro.getAno() +
-			", cavalos=" + carro.getCavalos() + "WHERE codigo = " + carro.getId();
+			String sql = "UPDATE carro SET modelo = '" + carro.getModelo() +"', fabricante = '" + carro.getFabricante() + "' , ano = " + carro.getAno() +
+			", cavalos=" + carro.getCavalos() + "WHERE id = " + carro.getId();
 			
 			st.executeUpdate(sql);
 			st.close();
